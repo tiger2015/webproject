@@ -1,0 +1,39 @@
+@CHARSET "UTF-8";
+.errorMessage {
+	color: red;
+	font-size: 12px;
+}
+
+.describeshow{	
+	z-index: 9999;
+	position: absolute;
+	color: #ffffff;	
+	background: #2C5463;
+	width: 200px;
+}
+.descibehide{
+	display:none;
+}
+
+.showtable{	
+	text-align: center;	
+	
+}
+
+.showtable thead{
+   color:#ffffff;
+   background-color: #2f5463;
+}
+
+.showtable tbody{
+	background-color: #508398;
+	
+}
+/* 发布信息时的标题 */
+.title{
+	width: 275px;	
+}
+
+.select{
+	margin-left: 95px;
+}

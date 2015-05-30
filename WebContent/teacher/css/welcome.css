@@ -1,0 +1,23 @@
+@CHARSET "UTF-8";
+
+#top {
+	margin-left: 50px;
+	height: 100px;
+	background:#2C5463;
+	text-align: center;
+}
+#top h2{
+position: relative;
+top: 25px;
+
+}
+#center{
+margin-left: 50px;
+}
+
+#bottom{
+	text-align:center;
+	background: #2C5463;
+	margin-left: 50px;
+	 margin-top: 50px; 
+}

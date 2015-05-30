@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.entity.UserInfo" table="USERINFO" schema="HR" select-before-update="true">
+        <id name="userId" type="java.lang.String">
+            <column name="userid" />
+            <generator class="assigned" />
+        </id>
+        <property name="userPassword" type="java.lang.String">
+            <column name="userpassword" length="16" />
+        </property>
+        <property name="userRole" type="java.lang.Integer">
+            <column name="userrole"  />
+        </property>
+        <property name="isOnline" type="java.lang.Integer">
+            <column name="isonline" />
+        </property>
+        <set name="responses" inverse="true">
+            <key>
+                <column name="userid"  />
+            </key>
+            <one-to-many class="com.entity.Response" />
+        </set>
+        <set name="messages" inverse="true">
+            <key>
+                <column name="userid"  />
+            </key>
+            <one-to-many class="com.entity.Message" />
+        </set>
+    </class>
+</hibernate-mapping>

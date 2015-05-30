@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE validators PUBLIC
+  		"-//Apache Struts//XWork Validator 1.0.3//EN"
+  		"http://struts.apache.org/dtds/xwork-validator-1.0.3.dtd">
+<validators>
+	<field name="chatClass.className">
+		<field-validator type="requiredstring" short-circuit="true">
+			<param name="trim">true</param>
+			<message>班级名称不能为空!</message>
+		</field-validator>
+		<field-validator type="stringlength">
+			<param name="trim">true</param>
+			<param name="maxLength">15</param>
+			<message>班级名称最大长度为${maxLength}个字符!</message>
+		</field-validator>				
+	</field>
+	<field name="chatClass.capacity">
+		<field-validator type="required" short-circuit="true">
+			<message>班级容量不能为空!</message>
+		</field-validator>		
+		<field-validator type="int">
+			<param name="min">20</param>
+			<param name="max">200</param>
+			<message>班级容量必须在20到200之间!</message>
+		</field-validator>
+	</field>
+	<field name="chatClass.classDescribe">
+		<field-validator type="requiredstring" short-circuit="true">
+			<param name="trim">true</param>
+			<message>班级描述不能为空!</message>
+		</field-validator>
+		<field-validator type="stringlength">
+			<param name="maxLength">80</param>
+			<message>班级名称最大长度为${maxLength}个字符!</message>
+		</field-validator>
+	</field>
+</validators>

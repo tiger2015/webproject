@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.entity.CourseFile" table="coursefile" schema="hr" dynamic-insert="true" lazy="true">
+		<id name="courseFileId" type="java.lang.String">
+			<column name="coursefileid"></column>
+		</id>
+		<property name="courseName" type="java.lang.String">
+			<column name="coursename"></column>
+		</property>
+		<!-- <property name="course" type="java.sql.Blob">
+			<column name="course"></column>
+		</property> -->
+		<property name="uploadDate" type="java.sql.Timestamp">
+			<column name="uploadtime"></column>
+		</property>
+		<many-to-one name="teacher" class="com.entity.Teacher" lazy="false">
+			<column name="teacherid"></column>
+		</many-to-one>
+		<many-to-one name="chatClass" class="com.entity.ChatClass" lazy="false">
+		  <column name="classid"></column>
+		</many-to-one>
+	</class>
+</hibernate-mapping>

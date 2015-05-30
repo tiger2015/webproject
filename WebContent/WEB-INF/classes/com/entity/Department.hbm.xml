@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.entity.Department" table="department" schema="hr"
+		dynamic-insert="true" dynamic-update="true">
+		<id name="departementId" type="java.lang.Long">
+			<column name="departmentid"></column>
+			<generator class="increment"></generator>
+		</id>
+		<property name="departmentName" type="java.lang.String">
+			<column name="departmentname" length="60" not-null="true"></column>
+		</property>
+		<set name="disciplines" inverse="true">
+			<key>
+				<column name="departmentid"></column>
+			</key>
+			<one-to-many class="com.entity.Discipline" />
+		</set>
+		<set name="students" inverse="true">
+			<key>
+				<column name="departmentid"></column>
+			</key>
+			<one-to-many class="com.entity.Student" />
+		</set>
+		<set name="teachers">
+			<key>
+				<column name="departmentid"></column>
+			</key>
+			<one-to-many class="com.entity.Teacher" />
+		</set>
+	</class>
+</hibernate-mapping>

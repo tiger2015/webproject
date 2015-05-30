@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.entity.Message" table="message" schema="hr" dynamic-insert="true" lazy="false">
+		<id name="messageId" type="java.lang.String">
+			<column name="messageid"></column>
+		</id>
+		<property name="messageDate" type="java.sql.Timestamp">
+			<column name="messagedate"></column>
+		</property>
+		<property name="messageContent" type="java.lang.String">
+			<column name="messagecontent"></column>
+		</property>
+		<property name="title" type="java.lang.String">
+			<column name="title"></column>
+		</property>
+		<many-to-one name="userinfo" class="com.entity.UserInfo">
+			<column name="userid"></column>
+		</many-to-one>
+		<many-to-one name="chatClass" class="com.entity.ChatClass">
+			<column name="classid"></column>
+		</many-to-one>
+		<set name="responses" inverse="true" lazy="false" cascade="delete">
+			<key>
+				<column name="messageid"></column>
+			</key>
+			<one-to-many class="com.entity.Response"/>
+		</set>
+	</class>
+
+</hibernate-mapping>

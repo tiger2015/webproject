@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+          "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+          "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+
+	<session-factory>
+		<property name="connection.url">
+			jdbc:oracle:thin:@127.0.0.1:1521:orcl
+		</property>
+		<property name="connection.driver_class">
+			oracle.jdbc.driver.OracleDriver
+		</property>
+		<property name="connection.username">hr</property>
+		<property name="connection.password">tiger</property>
+		<property name="connection.pool_size">2</property>
+		<property name="connection.dialect">
+			org.hibernate.dialect.OracleDialect
+		</property>
+		<property name="show_sql">true</property>
+		<property name="format_sql">true</property>
+		<property name="use_identifier_rollback">true</property>
+		<mapping resource="com/entity/CourseFile.hbm.xml" />
+		<mapping resource="com/entity/Department.hbm.xml" />
+		<mapping resource="com/entity/ChatClass.hbm.xml" />
+		<mapping resource="com/entity/Teacher.hbm.xml" />
+		<mapping resource="com/entity/StudentClass.hbm.xml" />
+		<mapping resource="com/entity/UserInfo.hbm.xml" />
+		<mapping resource="com/entity/Student.hbm.xml" />
+		<mapping resource="com/entity/Response.hbm.xml" />
+		<mapping resource="com/entity/JoinRequest.hbm.xml" />
+		<mapping resource="com/entity/Discipline.hbm.xml" />
+		<mapping resource="com/entity/Message.hbm.xml" />
+	</session-factory>
+
+</hibernate-configuration>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.entity.StudentClass" table="studentclass"
+		schema="HR" dynamic-insert="true" dynamic-update="true">
+		<composite-id name="studentClassId" class="com.entity.StudentClassId" >
+			<key-many-to-one name="chatClass" class="com.entity.ChatClass" lazy="false">
+				<column name="classid" />
+			</key-many-to-one>
+			<key-many-to-one name="student" class="com.entity.Student" lazy="false">
+				<column name="studentid"/>
+			</key-many-to-one>
+		</composite-id>
+		<property name="joinDate" type="java.sql.Timestamp" update="false">
+			<column name="joindate" />
+		</property>
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.entity.ChatClass" table="chatclass" schema="hr"
+		dynamic-insert="true" lazy="false">
+		<id name="classId" type="java.lang.String">
+			<column name="classid"></column>
+		</id>
+		<property name="className" type="java.lang.String">
+			<column name="classname"></column>
+		</property>
+		<property name="createDate" type="java.sql.Timestamp" update="false">
+			<column name="createdate"></column>
+		</property>
+		<property name="capacity" type="java.lang.Integer">
+			<column name="capacity"></column>
+		</property>
+		<property name="total" type="java.lang.Integer" >
+			<column name="total"></column>
+		</property>
+		<property name="classDescribe" type="java.lang.String" update="false">
+			<column name="classdescribe"></column>
+		</property>
+		<many-to-one name="teacher" class="com.entity.Teacher"
+			fetch="select" lazy="false">
+			<column name="teacherid"></column>
+		</many-to-one>
+		<set name="studentClass" inverse="true" cascade="delete" lazy="false">
+			<key>
+				<column name="classid"></column>
+			</key>
+			<one-to-many class="com.entity.StudentClass" />
+		</set>
+		<set name="messages" inverse="true" cascade="delete">
+			<key>
+				<column name="classid"></column>
+			</key>
+			<one-to-many class="com.entity.Message" />
+		</set>
+		<set name="joinrequests" cascade="delete" inverse="true">
+			<key>
+				<column name="classid"></column>
+			</key>
+			<one-to-many class="com.entity.JoinRequest"/>
+		</set>
+		<set name="coursefile" cascade="delete" inverse="true">
+		     <key>
+		     <column name="classid"></column>
+		     </key>
+		     <one-to-many class="com.entity.CourseFile"/>
+		</set>
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<package name="teacher" namespace="/teacher" extends="default">
+		<action name="AddChatClass" class="com.teacher.action.AddChatClass"
+			method="addChatClass">
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<result name="success">/teacher/welcome.jsp?flag=1</result>
+			<result name="input">/teacher/addchatclass.jsp</result>
+		</action>
+		<action name="FindChatClass" class="com.teacher.action.FindChatClass"
+			method="findClasses">
+			<result name="success">/teacher/findchatclass.jsp</result>
+		</action>
+		<action name="FindDetailChatClass" class="com.teacher.action.FindDetailChatClass"
+			method="findDetailChatClass">
+			<result name="success">/teacher/showchatclass.jsp</result>
+		</action>
+		<action name="FindCreatedClass" class="com.teacher.action.FindCreatedClass"
+			method="findCreatedClass">
+			<result name="success">/teacher/findcreatedclass.jsp</result>
+			<result name="message">/teacher/addmessage.jsp</result>
+			<result name="coursefile">/teacher/uploadfile.jsp</result>
+		</action>
+		<action name="FindChatClassById" class="com.teacher.action.FindChatClassById"
+			method="findChatClassById">
+			<result name="success">/teacher/updatechatclass.jsp</result>
+		</action>
+		<action name="UpdateChatClass" class="com.teacher.action.UpdateChatClass"
+			method="updateChatClass">
+			<!-- <interceptor-ref name="prepare"/> -->
+			<interceptor-ref name="defaultStack">
+
+			</interceptor-ref>
+			<result name="success" type="redirect">FindCreatedClass</result>
+			<result name="input">/teacher/updatechatclass.jsp</result>
+		</action>
+		<action name="FindJoinRequest" class="com.teacher.action.FindJoinRequest"
+			method="findJoinRequest">
+			<result name="success">/teacher/findallrequest.jsp</result>
+		</action>
+		<action name="DealWithRequest" class="com.teacher.action.DealWithRequest"
+			method="dealWithRequest">
+			<result name="success" type="chain">FindJoinRequest</result>
+		</action>
+		<action name="DeleteChatClass" class="com.teacher.action.DeleteChatClass"
+			method="deleteChatClass">
+			<result name="success" type="redirect">FindCreatedClass</result>
+		</action>
+		<action name="AddMessage" class="com.teacher.action.AddMessage"
+			method="addMessage">
+			<result name="success">/teacher/welcome.jsp?flag=1</result>
+			<result name="input">/teacher/addmessage.jsp</result>
+		</action>
+		<action name="FindMessage" class="com.teacher.action.FindMessage"
+			method="findMessage">
+			<result name="success">/teacher/findmessage.jsp</result>
+		</action>
+		<action name="FindResponse" class="com.teacher.action.FindResponse"
+			method="findResponse">
+			<result name="success">/teacher/showresponse.jsp</result>
+		</action>
+		<action name="AddResponse" class="com.teacher.action.AddResponse"
+			method="addResponse">
+			<result name="success" type="chain">FindResponse</result>
+		</action>
+		<action name="UploadFile" class="com.teacher.action.UploadFile"
+			method="uploadFile">
+			<interceptor-ref name="fileUpload">
+				<param name="allowedTypes">
+					application/zip,application/vnd.ms-excel,text/plain,application/x-rar-compressed,
+					application/vnd.ms-powerpoint,application/msword,text/html,text/x-java-source,
+					application/pdf
+				</param>
+				<param name="maximumSize">104857600</param>
+			</interceptor-ref>
+			<interceptor-ref name="defaultStack" />
+			<result name="success">/teacher/welcome.jsp?flag=1</result>
+			<result name="input">/teacher/fileuploaderror.jsp</result>
+		</action>
+		<action name="FindCourseFile" class="com.teacher.action.FindCourseFile"
+			method="findCourseFile">
+			<result name="success">/teacher/findcoursefile.jsp</result>
+		</action>
+		<action name="DownloadFile" class="com.teacher.action.DownloadFile"
+			method="downloadFile">
+			<result name="success" type="stream">
+				<param name="contentType">application/octet-stream;charset=UTF-8</param>
+				<param name="contentDisposition">attachment;filename="${fileName}"</param>
+				<param name="inputName">inputStream</param>
+				<param name="bufferSize">4096</param>
+			</result>
+		</action>
+		<action name="DeleteCourseFile" class="com.teacher.action.DeleteCourseFile"
+			method="deleteCourseFile">
+			<result name="success" type="chain">FindCourseFile</result>
+		</action>
+		<action name="RemoveStudent" class="com.teacher.action.RemoveStudent"
+			method="removeStudent">
+			<result name="success" type="redirect">teacher/FindDetailChatClass?classid=${classId}
+			</result>
+		</action>
+		<action name="FindUserinfo" class="com.teacher.action.FindUserinfo"
+			method="findUserinfo">
+			<result name="success">/teacher/showuserinfo.jsp</result>
+		</action>
+	</package>
+</struts>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<package name="login" namespace="/login" extends="default">
+		<action name="LoginAction" class="com.util.LoginAction" method="login">
+			<result name="student" type="redirect">/student/welcome.jsp</result>
+			<result name="teacher" type="redirect">/teacher/welcome.jsp</result>
+			<result name="input">/index.jsp</result>
+		</action>
+		<action name="LogoutAction" class="com.util.LogoutAction"
+			method="logout">
+			<result name="success" type="redirect">/index.jsp</result>
+		</action>
+		<action name="FindPersonalInfo" class="com.util.FindPersonalInfo"
+			method="findPersonalInfo">
+			<result name="student">/student/personalinfo.jsp</result>
+			<result name="teacher">/teacher/personalinfo.jsp</result>
+			<result name="input">/error.jsp</result>
+		</action>
+		<action name="UpdatePassword" class="com.util.UpdatePassword"
+			method="updatePassword">
+			<result name="student" type="redirect">/student/welcome.jsp</result>
+			<result name="teacher" type="redirect">/teacher/welcome.jsp</result>
+			<result name="input">/updatepassword.jsp</result>
+		</action>
+	</package>
+</struts>

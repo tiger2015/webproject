@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.entity.Response" table="response" schema="HR"
+		dynamic-update="true" dynamic-insert="true">
+		<id name="responseId" type="java.lang.String">
+			<column name="responseid" />
+		</id>
+		<property name="responseDate" type="java.sql.Timestamp">
+			<column name="responsedate" length="7" />
+		</property>
+		<property name="responseContent" type="java.lang.String">
+			<column name="responsecontent" />
+		</property>
+		<many-to-one name="userinfo" class="com.entity.UserInfo" lazy="false">
+			<column name="userid"  />
+		</many-to-one>
+		<many-to-one name="message" class="com.entity.Message">
+			<column name="messageid" />
+		</many-to-one>
+	</class>
+</hibernate-mapping>

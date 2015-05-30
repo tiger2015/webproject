@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<package name="student" namespace="/student" extends="default">
+		<action name="FindChatClass" class="com.student.action.FindChatClass"
+			method="findChatClass">
+			<result name="success">/student/joinclass.jsp</result>
+		</action>
+		<action name="JoinChatClass" class="com.student.action.JoinChatClass"
+			method="joinClass">
+			<result name="success">/student/joinclass.jsp</result>
+		</action>
+		<action name="FindRequest" class="com.student.action.FindRequest"
+			method="findRequest">
+			<result name="success">/student/myrequest.jsp</result>
+		</action>
+		<action name="FindJoinedClass" class="com.student.action.FindJoinedClass"
+			method="findJoinedClass">
+			<result name="success">/student/myjoinedclass.jsp</result>
+			<result name="message">/student/releasemessage.jsp</result>
+			<result name="findmessage">/student/findmessage.jsp</result>
+			<result name="downloadfile">/student/downloadfile.jsp</result>
+		</action>
+		<action name="AddMessage" class="com.student.action.AddMessage"
+			method="addMessage">
+			<result name="success">/student/welcome.jsp?flag=1</result>
+			<result name="input">/student/releasemessage.jsp</result>
+		</action>
+		<action name="FindMessage" class="com.student.action.FindMessage" method="findMessage">
+		<result name="success">/student/findmessage.jsp</result>
+		</action>
+		<action name="FindResponse" class="com.student.action.FindResponse" method="findResponse">
+		<result name="success">/student/getresponse.jsp</result>
+		</action>
+		<action name="AddResponse" class="com.student.action.AddResponse" method="addResponse">
+		<result name="success" type="chain">FindResponse</result>
+		</action>
+		<action name="DownloadFile" class="com.student.action.DownloadFile" method="downloadFile">
+			<result name="success" type="stream">
+				<param name="contentType">application/octet-stream</param>		
+				<param name="contentDisposition">attachment;filename="${fileName}"</param>
+				<param name="inputName">inputStream</param>
+				<param name="bufferSize">4096</param>
+			</result>
+		</action>
+		<action name="FindCourseFile" class="com.student.action.FindCourseFile" method="findCourseFile">
+		<result name="success">/student/downloadfile.jsp</result>
+		</action>
+		<action name="FindUserinfo" class="com.student.action.FindUserinfo" method="findUserinfo">
+		<result name="success">/student/showuserinfo.jsp</result>
+		</action>
+	</package>
+</struts>

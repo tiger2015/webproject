@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.entity.Discipline" table="discipline" schema="hr">
+		<id name="disciplineId" type="java.lang.Long">
+			<column name="disciplineid"></column>
+			<generator class="increment"></generator>
+		</id>
+		<property name="disciplineName" type="java.lang.String">
+			<column name="desciplinename" length="60"></column>
+		</property>
+		<many-to-one name="department" class="com.entity.Department">
+		<column name="departmentid"></column>
+		</many-to-one>
+		<set name="students" inverse="true">
+		   <key>
+		   <column name="departmentid" unique="true"></column>
+		   </key>
+		   <one-to-many class="com.entity.Student"></one-to-many>
+		</set>
+	</class>
+</hibernate-mapping>
